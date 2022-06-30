@@ -7,56 +7,32 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 19 Jun 2022 10:56:49 +0800</lastBuildDate><atom:link href="/tags/eda/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 29 Jun 2022 00:16:54 +0800</lastBuildDate><atom:link href="/tags/eda/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>yosys 常用命令（持续更新）</title>
-      <link>/post/2022-6-19-2/</link>
-      <pubDate>Sun, 19 Jun 2022 10:56:49 +0800</pubDate>
+      <title>形式验证相关术语梳理</title>
+      <link>/post/2022-6-29-2/</link>
+      <pubDate>Wed, 29 Jun 2022 00:16:54 +0800</pubDate>
       
-      <guid>/post/2022-6-19-2/</guid>
-      <description>yosys 命令参考文档：https://yosyshq.net/yosys/documentation.html
-1. abc： 使用ABC进行技术映射（ABC：一个时序综合验证系统）
-2. read 加载 HDL 设计文件
-read -sv test.v // 参数 -sv 表示支持 SystemVerilog 3. read_verilog 从 verilog 文件中读取 modules
-4. hierarchy 检查、扩展和清理设计 hierarchy
-hierarchy -top modulename 5. write_ilang(write_rtlil) 将设计写入RTLIL文件
-6. proc 将进程转换为 netlist
-7. techmap 通用的技术映射器，将网表转换为门逻辑并执行一些简单的优化。
-8. write_verilog 将设计出的 netlist 写进新的 verilog 文件</description>
-    </item>
-    
-    <item>
-      <title>数字电路基础之数学逻辑</title>
-      <link>/post/2022-6-7-math/</link>
-      <pubDate>Tue, 07 Jun 2022 22:35:54 +0800</pubDate>
-      
-      <guid>/post/2022-6-7-math/</guid>
-      <description>参考自《电子技术基础.数字部分》。
-1. 数字集成电路 电子电路按功能分为模拟电路和数字电路。根据电路的结构特点及其对输入信号相应规则的不同，数字电路可分为组合逻辑电路和时序逻辑电路。数字电路中的电子器件，例如二极管、三极管处于开关状态，时而导通，时而截止，构成电子开关。这些电子开关是组成逻辑门电路的基本器件。逻辑门电路又是数字电路的基本单元。如果将这些门电路集成在一片半导体芯片上就构成了数字集成电路。
-数字电路在集成度方面的发展：专用集成电路（ASIC）制作技术。ASIC是将一个复杂的数字系统制作在一块半导体芯片上，构成系统级芯片（Soc）。用户通过软件编程，将自己设计的数字系统制作在厂家厂家生产的可编程逻辑器件（PLD）半成品芯片上，便得到所需的系统级芯片。
-在材料上的发展：由晶体管-晶体管逻辑门电路（TTL）发展到金属-氧化物-半导体（MOCS）工艺、互补型金属氧化物半导体（CMOS）工艺。
-1.1 数字电路的分析方法 数字电路处理的是数字信号，主要研究的对象是电路的输出与输入之间的逻辑关系，所采用的分析工具是逻辑代数，表达电路输出与输入的关系主要用真值表、功能表、逻辑表达式或波形图。
-借助计算机仿真软件，对电路进行分析，不仅可以进行电路进行电路的功能仿真，显示逻辑仿真的波形结果，以检查逻辑错误，而且可以考虑器件以连线的延迟时间，进行时序仿真，检测电路中存在的冒险竞争、时序错误等问题。
-1.2 数字电路的设计方法 数字电路的设计是从给定的逻辑功能要求出发，确定输入、输出变量，选择适当的逻辑器件，设计出符合要求的逻辑电路。设计过程一般有方案的提出、验证和修改三个阶段。
-借助 EDA 软件可以快速准确地完成电路的设计，设计者提出方案后，利用计算机 EDA 软件进行逻辑分析、性能分析、时序测试，如果发现错误或者方案不理想，可以重复上述过程直至得到满意的电路。
-1.3 数字电路的测试技术 数字电路在正确设计和安装后，必须经过严格的测试方可使用。
-1.4 模拟信号和数字信号 模拟信号：在时间上连续变化，幅值也是连续取值。
-数字信号：时间离散，数值也离散。
-1.5 二值数字逻辑和逻辑电平 在电路中，用电子器件的开关来实现二值数字逻辑，也就是以高、低电平分别表示逻辑 1 和 0 两种状态。数字电压的高、低电平通常称为逻辑电平。
-1.5 数字波形 数字波形是逻辑电平对时间的图形表示。
-1.6 数制 在 verilog 中数字声明时，合法的基数格式有 4 中，包括：十进制(&amp;rsquo;d 或 &amp;lsquo;D)，十六进制(&amp;lsquo;h 或 &amp;lsquo;H)，二进制（&amp;lsquo;b 或 &amp;lsquo;B），八进制（&amp;lsquo;o 或 &amp;lsquo;O）。
-1.7 基本逻辑运算 与运算：只有当一件事的几个条件全部具备之后，这件事情才发生。
-或运算：当一件事情的几个条件中只要有一个条件得到满足，这件事就会发生。
-非运算：一件事情的发生是以其相反的条件作为依据。
-与非运算：与运算和非运算结合在一起。
-或非运算：由或运算和非运算组合在一起。
-异或运算：当两个输入信号相同时，输出为0；当两个输入信号不同时，输出为1。
-同或运算：与异或相反，当两个输入信号相同时，输出为1；当两个输入信号不同时，输出为0。
-1.8 电路图、真值表、逻辑表达式、逻辑图和波形图 电路图和真值表：
-逻辑表达式：
-逻辑图：
-波形图：
-1.9 逻辑代数的基本定律和恒等式 </description>
+      <guid>/post/2022-6-29-2/</guid>
+      <description>1. rtl 在电路设计中RTL（Register Transfer Level）表示寄存器传输级。
+RTL设计由Verilog或者VHDL硬件描述语言描述出理想电路达到的功能。其实际对应的结构是众多算术运算单元（ALU）、多路选择器（MUX）、寄存器等。
+在ASIC设计中，设计者的任务是给出功能正确的RTL级代码。
+2. netlist 电路设计中，网表（netlist）是用于描述电路元件相互之间连接关系的。
+RTL经过逻辑综合后，其描述的电路进一步展开，转换成用逻辑门和基本触发器相互连接搭建的电路，而用来描述这些逻辑门和触发器之间的连接关系的文件就是门级网表文件。
+netlist是由quartus、vivado、dc等综合工具生成的。
+3. hierarchy 在电路设计中，hierarchy表示设计电路的层次化/结构化结构。
+层次化电路设计方法实际上是一种模块化设计方法，用户可以将带设计的电路划分为多个子模块，每个子模块下面又可以划分为若干个功能模块，每个功能模块下面又可以划分为若干个基本模块，设计好每个基本模块，定义好每个基本模块之间的连接关系，就可以完成整个电路的设计过程。
+若利用布尔运算法则说明，则是给设计添加中间变量和逻辑结构。层次化电路中，综合工具会寻找可分解出来的子块进行扁平化处理。
+4. flatten 如果利用布尔运算法则说明，flatten扁平化指的是将设计中的中间变量和结构转换掉。
+具体地讲，flatten扁平化能将RTL代码实际对应的结构描述中的众多算术运算单元（ALU）、多路选择器（MUX）、寄存器等，进一步展开，转换成用AND、OR、NOT、XNOR等逻辑门和DFF、JK或者RS等基本触发器搭建的电路。
+5. synthesis 综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。
+通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。
+其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。
+另外也要注意verilog中的可综合与不可综合语句。
+6. techmapping technology工艺映射是将逻辑图或网表转化成可以用工艺实现的新的图或网表的过程。
+逻辑综合中,工艺映射是关键的一步。它根据综合第二步骤中的优化所施加的时序和面积约束，从目标工艺库中搜索符合条件的单元来构成实际电路的逻辑网表。
+7. elaborate 综合包括翻译（translation）+优化（optimization）+映射（techmapping）。elaborate是翻译步骤的一部分。 elaborate是将HDL描述扩展为将所有模块（Verilog）或实体（VHDL）的所有实例表示为唯一对象的过程。它还涉及在整个描述中评估和传播端口、常量和参数（Verilog）或泛型（VHDL）。完成后，您可以仿真或综合您的设计。 8. word-level model word-level model表示对rtl电路设计的一种字级表示，一般来说，字级表示模型中会出现类似于input [信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0] R变量，wire [width-1 : 0] W变量，这种多bit位数据之间直接进行位运算操作。
+9. bit-level model bit-level model表示对rtl电路设计的一种位级表示，一般来说，位级表示模型中会出现类似于input [信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0] R变量，wire [width-1 : 0] W变量这种多bit位数据之间采用其各自的单个bit位如input[0]、input[1]、output[0]、output[1]等逐步进行位运算操作最后得出运算结果。</description>
     </item>
     
   </channel>
