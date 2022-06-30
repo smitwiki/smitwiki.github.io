@@ -23,14 +23,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
   
-  <title>synthesis - wiki</title>
+  <title>bit-level model - wiki</title>
 
   
   
-  <meta name="description" content="综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。
-通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。
-其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。
-另外也要注意verilog中的可综合与不可综合语句。" />
+  <meta name="description" content="bit-level model表示对rtl电路设计的一种位级表示，一般来说，位级表示模型中会出现类似于input [信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0] R变量，wire [width-1 : 0] W变量这种多bit位数据之间采用其各自的单个bit位如input[0]、input[1]、output[0]、output[1]等逐步进行位运算操作最后得出运算结果。" />
   <meta name="author" content="" />
   
 
@@ -81,33 +78,24 @@
   
   
   
-  <meta property="og:title" content="synthesis" />
-<meta property="og:description" content="综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。
-通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。
-其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。
-另外也要注意verilog中的可综合与不可综合语句。" />
+  <meta property="og:title" content="bit-level model" />
+<meta property="og:description" content="bit-level model表示对rtl电路设计的一种位级表示，一般来说，位级表示模型中会出现类似于input [信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0] R变量，wire [width-1 : 0] W变量这种多bit位数据之间采用其各自的单个bit位如input[0]、input[1]、output[0]、output[1]等逐步进行位运算操作最后得出运算结果。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="/glossary/synthesis/" /><meta property="article:section" content="glossary" />
+<meta property="og:url" content="/glossary/bit-levelmodel/" /><meta property="article:section" content="glossary" />
 <meta property="article:published_time" content="2022-06-21T00:16:54+08:00" />
 <meta property="article:modified_time" content="2022-06-21T00:16:54+08:00" />
 
 
   
-  <meta itemprop="name" content="synthesis">
-<meta itemprop="description" content="综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。
-通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。
-其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。
-另外也要注意verilog中的可综合与不可综合语句。"><meta itemprop="datePublished" content="2022-06-21T00:16:54+08:00" />
+  <meta itemprop="name" content="bit-level model">
+<meta itemprop="description" content="bit-level model表示对rtl电路设计的一种位级表示，一般来说，位级表示模型中会出现类似于input [信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0] R变量，wire [width-1 : 0] W变量这种多bit位数据之间采用其各自的单个bit位如input[0]、input[1]、output[0]、output[1]等逐步进行位运算操作最后得出运算结果。"><meta itemprop="datePublished" content="2022-06-21T00:16:54+08:00" />
 <meta itemprop="dateModified" content="2022-06-21T00:16:54+08:00" />
-<meta itemprop="wordCount" content="4">
+<meta itemprop="wordCount" content="16">
 <meta itemprop="keywords" content="" />
   
   <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="synthesis"/>
-<meta name="twitter:description" content="综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。
-通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。
-其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。
-另外也要注意verilog中的可综合与不可综合语句。"/>
+<meta name="twitter:title" content="bit-level model"/>
+<meta name="twitter:description" content="bit-level model表示对rtl电路设计的一种位级表示，一般来说，位级表示模型中会出现类似于input [信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0] R变量，wire [width-1 : 0] W变量这种多bit位数据之间采用其各自的单个bit位如input[0]、input[1]、output[0]、output[1]等逐步进行位运算操作最后得出运算结果。"/>
 
   
   
@@ -198,24 +186,19 @@
       
       
     </p>
-    <h1>synthesis</h1>
+    <h1>bit-level model</h1>
   </header>
 
   
 
   <section class="post-content"><ul>
 <li>
-<p>综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。</p>
-</li>
-<li>
-<p>通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。</p>
-</li>
-<li>
-<p>其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。</p>
-</li>
-<li>
-<p>另外也要注意verilog中的可综合与不可综合语句。</p>
-<p><img src="/media/5.png" alt="图示 描述已自动生成"></p>
+<p>bit-level model表示对rtl电路设计的一种位级表示，一般来说，位级表示模型中会出现类似于input
+[信号位宽-1 ：0] 端口名，output [信号位宽-1 ：0] 端口名，reg [width-1 : 0]
+R变量，wire [width-1 : 0]
+W变量这种多bit位数据之间采用其各自的单个bit位如input[0]、input[1]、output[0]、output[1]等逐步进行位运算操作最后得出运算结果。</p>
+<p><img src="/media/9.png" alt="图示 描述已自动生成">
+<img src="/media/9_1.png" alt="图示 描述已自动生成"></p>
 </li>
 </ul>
 </section>
