@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Posts on Vitae</title>
+		<link>http://example.org/content/post/</link>
+		<description>Recent content in Posts on example.org</description>
+		<generator>Hugo -- gohugo.io</generator>
+		<language>en-us</language>
+		<copyright>© Copyright notice | Vitae theme for Hugo</copyright>
+		<lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate>
+		<atom:link href="http://example.org/content/post/index.xml" rel="self" type="application/rss+xml" />
+		<item>
+			<title>Markdown Syntax Guide</title>
+			<link>http://example.org/content/post/markdown-syntax/</link>
+			<pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>http://example.org/content/post/markdown-syntax/</guid>
+			<description>
+			Sample article showcasing basic Markdown syntax and formatting for HTML elements.
+			</description>
+		</item>
+		<item>
+			<title>Rich Content</title>
+			<link>http://example.org/content/post/rich-content/</link>
+			<pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>http://example.org/content/post/rich-content/</guid>
+			<description>
+			A brief description of Hugo Shortcodes
+			</description>
+		</item>
+		<item>
+			<title>Placeholder Text</title>
+			<link>http://example.org/content/post/placeholder-text/</link>
+			<pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>http://example.org/content/post/placeholder-text/</guid>
+			<description>
+			Lorem Ipsum Dolor Si Amet
+			</description>
+		</item>
+		<item>
+			<title>Math Typesetting</title>
+			<link>http://example.org/content/post/math-typesetting/</link>
+			<pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>http://example.org/content/post/math-typesetting/</guid>
+			<description>
+			A brief guide to setup KaTeX
+			</description>
+		</item>
+		<item>
+			<title>Emoji Support</title>
+			<link>http://example.org/content/post/emoji-support/</link>
+			<pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
+			<guid>http://example.org/content/post/emoji-support/</guid>
+			<description>
+			Guide to emoji usage in Hugo
+			</description>
+		</item>
+	</channel>
+</rss>

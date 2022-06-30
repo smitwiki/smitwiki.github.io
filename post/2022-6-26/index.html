@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>Formality 形式验证基本原理 - wiki</title>
+
+  
+  
+  <meta name="description" content="1. 相关术语 Common Compare Points 常见比较点
+Primary output 顶层输出 Register or latch 寄存器或锁存器 Input of a black-box 黑盒输入 Less Common Compare Points
+Multiply-driven net Loop Cutpoint 切割点 Logic Cone 逻辑锥
+驱动比较点的组合逻辑块（当设计很大的时候，可以分成很多块来比较，这些块就是逻辑锥） 锥底就是需要比较的点，锥底的输入就是要比较的所有输入 2. 原理 2.1 read 读 将参考和实现设计划分为逻辑锥和比较点.
+2.2 match 根据一定的匹配规则（通常是名字），匹配两个设计的锥。
+可能出现的匹配情况：
+matched 根据用户声明规则 matched Unmatched，不匹配并不说明不通过，也许不匹配的锥对功能不影响 2.3 verify 对 matched 的锥进行验证，等价即通过，不等价即功能不等价，整个验证没通过。 出现 fail 则 debug 2.4 debug 调试" />
+  <meta name="author" content="罗泽勋" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/twitter.svg" />
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+  <link rel="preload" as="image" href="/instagram.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.100.1" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="Formality 形式验证基本原理" />
+<meta property="og:description" content="1. 相关术语 Common Compare Points 常见比较点
+Primary output 顶层输出 Register or latch 寄存器或锁存器 Input of a black-box 黑盒输入 Less Common Compare Points
+Multiply-driven net Loop Cutpoint 切割点 Logic Cone 逻辑锥
+驱动比较点的组合逻辑块（当设计很大的时候，可以分成很多块来比较，这些块就是逻辑锥） 锥底就是需要比较的点，锥底的输入就是要比较的所有输入 2. 原理 2.1 read 读 将参考和实现设计划分为逻辑锥和比较点.
+2.2 match 根据一定的匹配规则（通常是名字），匹配两个设计的锥。
+可能出现的匹配情况：
+matched 根据用户声明规则 matched Unmatched，不匹配并不说明不通过，也许不匹配的锥对功能不影响 2.3 verify 对 matched 的锥进行验证，等价即通过，不等价即功能不等价，整个验证没通过。 出现 fail 则 debug 2.4 debug 调试" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/2022-6-26/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-29T00:30:05+08:00" />
+<meta property="article:modified_time" content="2022-06-29T00:30:05+08:00" />
+
+
+  
+  <meta itemprop="name" content="Formality 形式验证基本原理">
+<meta itemprop="description" content="1. 相关术语 Common Compare Points 常见比较点
+Primary output 顶层输出 Register or latch 寄存器或锁存器 Input of a black-box 黑盒输入 Less Common Compare Points
+Multiply-driven net Loop Cutpoint 切割点 Logic Cone 逻辑锥
+驱动比较点的组合逻辑块（当设计很大的时候，可以分成很多块来比较，这些块就是逻辑锥） 锥底就是需要比较的点，锥底的输入就是要比较的所有输入 2. 原理 2.1 read 读 将参考和实现设计划分为逻辑锥和比较点.
+2.2 match 根据一定的匹配规则（通常是名字），匹配两个设计的锥。
+可能出现的匹配情况：
+matched 根据用户声明规则 matched Unmatched，不匹配并不说明不通过，也许不匹配的锥对功能不影响 2.3 verify 对 matched 的锥进行验证，等价即通过，不等价即功能不等价，整个验证没通过。 出现 fail 则 debug 2.4 debug 调试"><meta itemprop="datePublished" content="2022-06-29T00:30:05+08:00" />
+<meta itemprop="dateModified" content="2022-06-29T00:30:05+08:00" />
+<meta itemprop="wordCount" content="58">
+<meta itemprop="keywords" content="" />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Formality 形式验证基本原理"/>
+<meta name="twitter:description" content="1. 相关术语 Common Compare Points 常见比较点
+Primary output 顶层输出 Register or latch 寄存器或锁存器 Input of a black-box 黑盒输入 Less Common Compare Points
+Multiply-driven net Loop Cutpoint 切割点 Logic Cone 逻辑锥
+驱动比较点的组合逻辑块（当设计很大的时候，可以分成很多块来比较，这些块就是逻辑锥） 锥底就是需要比较的点，锥底的输入就是要比较的所有输入 2. 原理 2.1 read 读 将参考和实现设计划分为逻辑锥和比较点.
+2.2 match 根据一定的匹配规则（通常是名字），匹配两个设计的锥。
+可能出现的匹配情况：
+matched 根据用户声明规则 matched Unmatched，不匹配并不说明不通过，也许不匹配的锥对功能不影响 2.3 verify 对 matched 的锥进行验证，等价即通过，不等价即功能不等价，整个验证没通过。 出现 fail 则 debug 2.4 debug 调试"/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">wiki</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">关于</a>
+    
+    <a class="" href="/post/">博客</a>
+    
+    <a class="" href="/author/">作者</a>
+    
+    <a class="" href="/categories/">分类</a>
+    
+    <a class="" href="/tags/">标签</a>
+    
+    <a class="" href="/series/">系列</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="twitter"
+      style="--url: url(./twitter.svg)"
+      href="https://twitter.com/nanxiaobei"
+      target="_blank"
+    ></a>
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/nanxiaobei"
+      target="_blank"
+    ></a>
+    
+    <a
+      class="instagram"
+      style="--url: url(./instagram.svg)"
+      href="https://instagram.com/nan.xiaobei"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jun 29, 2022</time>
+      
+      
+      <span>罗泽勋</span>
+      
+    </p>
+    <h1>Formality 形式验证基本原理</h1>
+  </header>
+
+  
+
+  <section class="post-content"><h1 id="1-相关术语">1. 相关术语</h1>
+<ul>
+<li>
+<p>Common Compare Points 常见比较点</p>
+<ul>
+<li>Primary output 顶层输出</li>
+<li>Register or latch 寄存器或锁存器</li>
+<li>Input of a black-box 黑盒输入</li>
+</ul>
+</li>
+<li>
+<p>Less Common Compare Points</p>
+<ul>
+<li>Multiply-driven net</li>
+<li>Loop</li>
+<li>Cutpoint 切割点</li>
+</ul>
+</li>
+<li>
+<p>Logic Cone 逻辑锥</p>
+<ul>
+<li>驱动比较点的组合逻辑块（当设计很大的时候，可以分成很多块来比较，这些块就是逻辑锥）</li>
+<li>锥底就是需要比较的点，锥底的输入就是要比较的所有输入</li>
+</ul>
+</li>
+</ul>
+<h1 id="2-原理">2. 原理</h1>
+<h2 id="21-read-读">2.1 read 读</h2>
+<p>将参考和实现设计划分为逻辑锥和比较点.</p>
+<h2 id="22-match">2.2 match</h2>
+<p>根据一定的匹配规则（通常是名字），匹配两个设计的锥。</p>
+<p>可能出现的匹配情况：</p>
+<ul>
+<li>matched</li>
+<li>根据用户声明规则 matched</li>
+<li>Unmatched，不匹配并不说明不通过，也许不匹配的锥对功能不影响</li>
+</ul>
+<h2 id="23-verify">2.3 verify</h2>
+<ul>
+<li>对 matched 的锥进行验证，等价即通过，不等价即功能不等价，整个验证没通过。</li>
+<li>出现 fail 则 debug</li>
+</ul>
+<h2 id="24-debug">2.4 debug</h2>
+<p>调试</p>
+</section>
+
+  
+  
+
+  
+  
+  
+  <nav class="post-nav">
+     
+    <a class="next" href="/post/2022-6-19-2/"><span>yosys 常用命令（持续更新）</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="/">wiki</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
