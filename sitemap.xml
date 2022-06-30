@@ -8,20 +8,17 @@
     <loc>/post/</loc>
     <lastmod>2022-06-29T11:20:09+08:00</lastmod>
   </url><url>
-    <loc>/author/</loc>
-    <lastmod>2022-06-29T11:20:09+08:00</lastmod>
-  </url><url>
     <loc>/post/glossary/</loc>
     <lastmod>2022-06-29T11:20:09+08:00</lastmod>
   </url><url>
-    <loc>/author/%E7%B3%B8%E8%89%B2%E5%85%88%E7%94%9F/</loc>
-    <lastmod>2022-06-29T11:20:09+08:00</lastmod>
+    <loc>/author/author/</loc>
+    <lastmod>2022-06-28T11:20:09+08:00</lastmod>
   </url><url>
-    <loc>/post/2022-6-26/</loc>
-    <lastmod>2022-06-29T00:30:05+08:00</lastmod>
+    <loc>/author/</loc>
+    <lastmod>2022-06-28T11:20:09+08:00</lastmod>
   </url><url>
-    <loc>/author/%E7%BD%97%E6%B3%BD%E5%8B%8B/</loc>
-    <lastmod>2022-06-29T00:30:05+08:00</lastmod>
+    <loc>/post/2022-6-29-test/</loc>
+    <lastmod>2022-06-28T11:20:09+08:00</lastmod>
   </url><url>
     <loc>/glossary/abc/</loc>
     <lastmod>2022-06-21T00:16:54+08:00</lastmod>
@@ -173,22 +170,12 @@
     <loc>/glossary/word-levelmodel/</loc>
     <lastmod>2022-06-21T00:16:54+08:00</lastmod>
   </url><url>
-    <loc>/tags/eda/</loc>
-    <lastmod>2022-06-19T10:56:49+08:00</lastmod>
-  </url><url>
-    <loc>/tags/</loc>
-    <lastmod>2022-06-19T10:56:49+08:00</lastmod>
-  </url><url>
-    <loc>/post/2022-6-19-2/</loc>
-    <lastmod>2022-06-19T10:56:49+08:00</lastmod>
-  </url><url>
-    <loc>/post/2022-6-7-math/</loc>
-    <lastmod>2022-06-07T22:35:54+08:00</lastmod>
-  </url><url>
     <loc>/about/</loc>
   </url><url>
     <loc>/categories/</loc>
   </url><url>
     <loc>/series/</loc>
+  </url><url>
+    <loc>/tags/</loc>
   </url>
 </urlset>
