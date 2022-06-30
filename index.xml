@@ -18,20 +18,20 @@
     </item>
     
     <item>
-      <title>Test 1</title>
-      <link>/post/2022-6-29-test/</link>
+      <title>Hello World</title>
+      <link>/post/xiaoming/2022-6-29-test2/</link>
       <pubDate>Tue, 28 Jun 2022 11:20:09 +0800</pubDate>
       
-      <guid>/post/2022-6-29-test/</guid>
+      <guid>/post/xiaoming/2022-6-29-test2/</guid>
       <description>test</description>
     </item>
     
     <item>
-      <title>Test 2</title>
-      <link>/post/2022-6-29-test2/</link>
+      <title>Test 1</title>
+      <link>/post/zxluo/2022-6-29-test/</link>
       <pubDate>Tue, 28 Jun 2022 11:20:09 +0800</pubDate>
       
-      <guid>/post/2022-6-29-test2/</guid>
+      <guid>/post/zxluo/2022-6-29-test/</guid>
       <description>test</description>
     </item>
     
@@ -523,7 +523,7 @@ Verilog 主要用于数字电路设计的描述，但不是所有的描述方式
       <guid>/about/</guid>
       <description>关于本站 学习记录分享。
 本站架构 采用 Hugo 作为后台系统，使用 Github Pages 服务，源码托管在 Github 上。本站主题使用 hugo-paper。
-相关链接 Github 源码： </description>
+相关链接 Github 源码：https://github.com/smitwiki </description>
     </item>
     
   </channel>
