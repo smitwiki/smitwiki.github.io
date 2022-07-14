@@ -36,6 +36,36 @@ netlist是由quartus、vivado、dc等综合工具生成的。
     </item>
     
     <item>
+      <title>逻辑等价性检查（LEC）</title>
+      <link>/post/zxluo/2022-6-20/</link>
+      <pubDate>Mon, 20 Jun 2022 00:16:54 +0800</pubDate>
+      
+      <guid>/post/zxluo/2022-6-20/</guid>
+      <description>参考
+功能ECO理论基础：逻辑等价性检查（LEC） 【A级忍术】形式验证的原理及流程详细总结 一、基础概念 golden：参考模型
+revised：待比较的设计
+逻辑锥Logic Cone：设计（module）就是“以DFF为终点的逻辑块”组成。不仅网表如此，RTL也是一样。所有数字电路都可以用always和assign这两种语法来实现（latch可以看作是DFF的一种）。这些“以DFF为终点的逻辑块”我们把它叫作逻辑锥
+Keypoint Mapping：逻辑锥的终点是DFF的CK（时钟）、Ｄ（数据）、RN（复位）、SN（置位），如果这几个“关键点”的逻辑都相同或者等价，那么这两个逻辑锥的逻辑就等价。
+只要两种设计的所有对应逻辑锥逻辑功能都被验证为等价，就认为两个设计等价。
+二、流程 设置一些与进行等价性验证有关的设置。例如，若设计中的某些模块不需要进行检查，可以将其设置为“黑盒子”；在验证插入扫描链的网表时，要将测试模式信号与扫描使能信号设置为禁止使能，等等。 进行比较点匹配。采用match令即可。一般来说，等价性检查工具会根据相近的信号命名来选取比较点，并给出比较点的报告。如果工具无法识别某些比较点，或者识别有错误，那么设计者可以手工进行相应设置。 进行验证。采用verify命令即可。 给出报告，如果发现错误，则利用图形化界面进行调试。 </description>
+    </item>
+    
+    <item>
+      <title>yosys 安装和简单使用</title>
+      <link>/post/zxluo/2022-6-18-3/</link>
+      <pubDate>Sat, 18 Jun 2022 20:56:49 +0800</pubDate>
+      
+      <guid>/post/zxluo/2022-6-18-3/</guid>
+      <description>一、前言 yosys 是一个开源综合工具，可以使用 C/C++ 扩展其功能。
+官网：https://yosyshq.net/yosys/
+Github：https://github.com/YosysHQ/yosys
+二、编译安装 操作环境： Ubuntu 18.04
+安装依赖包 apt-get install build-essential clang bison flex \libreadline-dev gawk tcl-dev libffi-dev git \graphviz xdot pkg-config python3 libboost-system-dev \libboost-python-dev libboost-filesystem-dev zlib1g-dev 下载源码、编译 git clone https://github.com/YosysHQ/yosys.gitcd yosysmake make install 三、简单使用 脚本方式：
+$ cat synth.ysread -sv test.vhierarchy -top up3down5proc; opt; techmap; optwrite_verilog synth.v$ ./yosys synth.ys 逐步：
+使用 verilog 前端读入 verilog 原始设计文件 yosys&amp;gt; read -sv tests/simple/fiedler-cooley.</description>
+    </item>
+    
+    <item>
       <title>VSCode 搭建远程开发环境</title>
       <link>/post/zxluo/2022-6-18/</link>
       <pubDate>Sat, 18 Jun 2022 00:56:49 +0800</pubDate>
@@ -79,6 +109,21 @@ Remote - SSH：使用 SSH 打开远程计算机上的任何文件夹，并利用
 对一个时序电路而言，可以把它看成一个有限状态机(FSM，finite-state machine)。电路功能的等价可以用有限状态机的等价来判断。假定有两个状态机A和B，要对它们进行比较。直观的说，当A和B有相同的接口，而且从相同的初始状态出发，两者对有效输入值序列产生相同的输出值序列，则可以说A和B等价。
 下图为时序等价性检查示意图
 7. 对比 Combinational equivalence：用于RTL vs Netlist的检查，检查寄存器之间的组合逻辑在综合前后是否一致，如Formality，Conformal。</description>
+    </item>
+    
+    <item>
+      <title>数字电路基础之组合逻辑电路和时序逻辑电路</title>
+      <link>/post/zxluo/2022-6-9/</link>
+      <pubDate>Thu, 09 Jun 2022 11:32:25 +0800</pubDate>
+      
+      <guid>/post/zxluo/2022-6-9/</guid>
+      <description>前言 数字系统中常用的各种数字部件，就其结构和工作原理而言可分为两大类，即组合逻辑电路和时序逻辑电路。
+1. 组合逻辑电路 1.1 概念 对于一个逻辑电路，其输出状态在任何时刻只取决于同一时刻的输入状态，而与电路原本的状态无关
+特点：
+输出、输入之间没有反馈延迟通路； 电路中不含具有记忆功能的元件。 2.时序逻辑电路 而时序电路是一种输出不仅与当前的输入有关，而且与其输出状态的原始状态有关，其相当于在组合逻辑的输入端加上了一个反馈输入，在其电路中有一个存储电路，其可以将输出的状态保持住。
+3.对比 1、组合逻辑电路在逻辑功能上的特点是任意时刻的输出仅仅取决于该时刻的输入，与电路原来的状态无关。
+2、时序逻辑电路在逻辑功能上的特点是任意时刻的输出不仅取决于当时的输入信号，而且还取决于电路原来的状态，或者说，还与以前的输入有关。
+4. 常用组合逻辑电路 算术运算电路（半加器、全加器、加法器） 编码器、译码器 数据选择、分配、比较器 5. 具有典型时序逻辑电路特征的三种逻辑器件 计数器 寄存器 顺序脉冲发生器 6. 相关概念 时钟：时钟是整个系统的同步信号，当时钟出现故障时会带来整体的功能故障。 </description>
     </item>
     
     <item>

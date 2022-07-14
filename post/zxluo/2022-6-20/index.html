@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  
+  <title>逻辑等价性检查（LEC） - wiki</title>
+
+  
+  
+  <meta name="description" content="参考
+功能ECO理论基础：逻辑等价性检查（LEC） 【A级忍术】形式验证的原理及流程详细总结 一、基础概念 golden：参考模型
+revised：待比较的设计
+逻辑锥Logic Cone：设计（module）就是“以DFF为终点的逻辑块”组成。不仅网表如此，RTL也是一样。所有数字电路都可以用always和assign这两种语法来实现（latch可以看作是DFF的一种）。这些“以DFF为终点的逻辑块”我们把它叫作逻辑锥
+Keypoint Mapping：逻辑锥的终点是DFF的CK（时钟）、Ｄ（数据）、RN（复位）、SN（置位），如果这几个“关键点”的逻辑都相同或者等价，那么这两个逻辑锥的逻辑就等价。
+只要两种设计的所有对应逻辑锥逻辑功能都被验证为等价，就认为两个设计等价。
+二、流程 设置一些与进行等价性验证有关的设置。例如，若设计中的某些模块不需要进行检查，可以将其设置为“黑盒子”；在验证插入扫描链的网表时，要将测试模式信号与扫描使能信号设置为禁止使能，等等。 进行比较点匹配。采用match令即可。一般来说，等价性检查工具会根据相近的信号命名来选取比较点，并给出比较点的报告。如果工具无法识别某些比较点，或者识别有错误，那么设计者可以手工进行相应设置。 进行验证。采用verify命令即可。 给出报告，如果发现错误，则利用图形化界面进行调试。 " />
+  <meta name="author" content="罗泽勋" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="/app.min.css" />
+
+  
+  <link rel="preload stylesheet" as="style" href="/an-old-hope.min.css" />
+  <script
+    defer
+    src="/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  <link rel="preload" as="image" href="/theme.png" />
+
+  
+  <link rel="preload" as="image" href="/twitter.svg" />
+  
+  <link rel="preload" as="image" href="/github.svg" />
+  
+  <link rel="preload" as="image" href="/instagram.svg" />
+  
+
+  
+  <link rel="icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.100.1" />
+
+  
+  
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <meta property="og:title" content="逻辑等价性检查（LEC）" />
+<meta property="og:description" content="参考
+功能ECO理论基础：逻辑等价性检查（LEC） 【A级忍术】形式验证的原理及流程详细总结 一、基础概念 golden：参考模型
+revised：待比较的设计
+逻辑锥Logic Cone：设计（module）就是“以DFF为终点的逻辑块”组成。不仅网表如此，RTL也是一样。所有数字电路都可以用always和assign这两种语法来实现（latch可以看作是DFF的一种）。这些“以DFF为终点的逻辑块”我们把它叫作逻辑锥
+Keypoint Mapping：逻辑锥的终点是DFF的CK（时钟）、Ｄ（数据）、RN（复位）、SN（置位），如果这几个“关键点”的逻辑都相同或者等价，那么这两个逻辑锥的逻辑就等价。
+只要两种设计的所有对应逻辑锥逻辑功能都被验证为等价，就认为两个设计等价。
+二、流程 设置一些与进行等价性验证有关的设置。例如，若设计中的某些模块不需要进行检查，可以将其设置为“黑盒子”；在验证插入扫描链的网表时，要将测试模式信号与扫描使能信号设置为禁止使能，等等。 进行比较点匹配。采用match令即可。一般来说，等价性检查工具会根据相近的信号命名来选取比较点，并给出比较点的报告。如果工具无法识别某些比较点，或者识别有错误，那么设计者可以手工进行相应设置。 进行验证。采用verify命令即可。 给出报告，如果发现错误，则利用图形化界面进行调试。 " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/post/zxluo/2022-6-20/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-06-20T00:16:54+08:00" />
+<meta property="article:modified_time" content="2022-06-20T00:16:54+08:00" />
+
+
+  
+  <meta itemprop="name" content="逻辑等价性检查（LEC）">
+<meta itemprop="description" content="参考
+功能ECO理论基础：逻辑等价性检查（LEC） 【A级忍术】形式验证的原理及流程详细总结 一、基础概念 golden：参考模型
+revised：待比较的设计
+逻辑锥Logic Cone：设计（module）就是“以DFF为终点的逻辑块”组成。不仅网表如此，RTL也是一样。所有数字电路都可以用always和assign这两种语法来实现（latch可以看作是DFF的一种）。这些“以DFF为终点的逻辑块”我们把它叫作逻辑锥
+Keypoint Mapping：逻辑锥的终点是DFF的CK（时钟）、Ｄ（数据）、RN（复位）、SN（置位），如果这几个“关键点”的逻辑都相同或者等价，那么这两个逻辑锥的逻辑就等价。
+只要两种设计的所有对应逻辑锥逻辑功能都被验证为等价，就认为两个设计等价。
+二、流程 设置一些与进行等价性验证有关的设置。例如，若设计中的某些模块不需要进行检查，可以将其设置为“黑盒子”；在验证插入扫描链的网表时，要将测试模式信号与扫描使能信号设置为禁止使能，等等。 进行比较点匹配。采用match令即可。一般来说，等价性检查工具会根据相近的信号命名来选取比较点，并给出比较点的报告。如果工具无法识别某些比较点，或者识别有错误，那么设计者可以手工进行相应设置。 进行验证。采用verify命令即可。 给出报告，如果发现错误，则利用图形化界面进行调试。 "><meta itemprop="datePublished" content="2022-06-20T00:16:54+08:00" />
+<meta itemprop="dateModified" content="2022-06-20T00:16:54+08:00" />
+<meta itemprop="wordCount" content="16">
+<meta itemprop="keywords" content="eda," />
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="逻辑等价性检查（LEC）"/>
+<meta name="twitter:description" content="参考
+功能ECO理论基础：逻辑等价性检查（LEC） 【A级忍术】形式验证的原理及流程详细总结 一、基础概念 golden：参考模型
+revised：待比较的设计
+逻辑锥Logic Cone：设计（module）就是“以DFF为终点的逻辑块”组成。不仅网表如此，RTL也是一样。所有数字电路都可以用always和assign这两种语法来实现（latch可以看作是DFF的一种）。这些“以DFF为终点的逻辑块”我们把它叫作逻辑锥
+Keypoint Mapping：逻辑锥的终点是DFF的CK（时钟）、Ｄ（数据）、RN（复位）、SN（置位），如果这几个“关键点”的逻辑都相同或者等价，那么这两个逻辑锥的逻辑就等价。
+只要两种设计的所有对应逻辑锥逻辑功能都被验证为等价，就认为两个设计等价。
+二、流程 设置一些与进行等价性验证有关的设置。例如，若设计中的某些模块不需要进行检查，可以将其设置为“黑盒子”；在验证插入扫描链的网表时，要将测试模式信号与扫描使能信号设置为禁止使能，等等。 进行比较点匹配。采用match令即可。一般来说，等价性检查工具会根据相近的信号命名来选取比较点，并给出比较点的报告。如果工具无法识别某些比较点，或者识别有错误，那么设计者可以手工进行相应设置。 进行验证。采用verify命令即可。 给出报告，如果发现错误，则利用图形化界面进行调试。 "/>
+
+  
+  
+</head>
+
+
+  <body class="not-ready" data-menu="true">
+    <header class="header">
+  
+  <p class="logo">
+    <a class="site-name" href="/">wiki</a><a class="btn-dark"></a>
+  </p>
+  
+
+  <script>
+    let bodyClx = document.body.classList;
+    let btnDark = document.querySelector('.btn-dark');
+    let sysDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let darkVal = localStorage.getItem('dark');
+
+    let setDark = (isDark) => {
+      bodyClx[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark ? 'yes' : 'no');
+    };
+
+    setDark(darkVal ? darkVal === 'yes' : sysDark.matches);
+    requestAnimationFrame(() => bodyClx.remove('not-ready'));
+
+    btnDark.addEventListener('click', () => setDark(!bodyClx.contains('dark')));
+    sysDark.addEventListener('change', (event) => setDark(event.matches));
+  </script>
+
+  
+  
+  <nav class="menu">
+    
+    <a class="" href="/about/">关于</a>
+    
+    <a class="" href="/post/">博客</a>
+    
+    <a class="" href="/author/">作者</a>
+    
+    <a class="" href="/categories/">分类</a>
+    
+    <a class="" href="/tags/">标签</a>
+    
+    <a class="" href="/series/">系列</a>
+    
+  </nav>
+  
+
+  
+  <nav class="social">
+    
+    <a
+      class="twitter"
+      style="--url: url(./twitter.svg)"
+      href="https://twitter.com/nanxiaobei"
+      target="_blank"
+    ></a>
+    
+    <a
+      class="github"
+      style="--url: url(./github.svg)"
+      href="https://github.com/nanxiaobei"
+      target="_blank"
+    ></a>
+    
+    <a
+      class="instagram"
+      style="--url: url(./instagram.svg)"
+      href="https://instagram.com/nan.xiaobei"
+      target="_blank"
+    ></a>
+    
+  </nav>
+  
+</header>
+
+
+    <main class="main">
+
+<article class="post-single">
+  <header class="post-title">
+    <p>
+      
+      <time>Jun 20, 2022</time>
+      
+      
+      <span>罗泽勋</span>
+      
+    </p>
+    <h1>逻辑等价性检查（LEC）</h1>
+  </header>
+
+  
+
+  <section class="post-content"><p>参考</p>
+<ul>
+<li><a href="https://mp.weixin.qq.com/s/8YsGMea-Kl5nnTsX0UoxgQ">功能ECO理论基础：逻辑等价性检查（LEC）
+</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/436453322">【A级忍术】形式验证的原理及流程详细总结
+</a></li>
+</ul>
+<h1 id="一基础概念">一、基础概念</h1>
+<p>golden：参考模型</p>
+<p>revised：待比较的设计</p>
+<p>逻辑锥Logic Cone：设计（module）就是“以DFF为终点的逻辑块”组成。不仅网表如此，RTL也是一样。所有数字电路都可以用always和assign这两种语法来实现（latch可以看作是DFF的一种）。这些“以DFF为终点的逻辑块”我们把它叫作逻辑锥</p>
+<p>Keypoint Mapping：逻辑锥的终点是DFF的CK（时钟）、Ｄ（数据）、RN（复位）、SN（置位），如果这几个“关键点”的逻辑都相同或者等价，那么这两个逻辑锥的逻辑就等价。</p>
+<p>只要两种设计的所有对应逻辑锥逻辑功能都被验证为等价，就认为两个设计等价。</p>
+<h1 id="二流程">二、流程</h1>
+<ol>
+<li>设置一些与进行等价性验证有关的设置。例如，若设计中的某些模块不需要进行检查，可以将其设置为“黑盒子”；在验证插入扫描链的网表时，要将测试模式信号与扫描使能信号设置为禁止使能，等等。</li>
+<li>进行比较点匹配。采用match令即可。一般来说，等价性检查工具会根据相近的信号命名来选取比较点，并给出比较点的报告。如果工具无法识别某些比较点，或者识别有错误，那么设计者可以手工进行相应设置。</li>
+<li>进行验证。采用verify命令即可。</li>
+<li>给出报告，如果发现错误，则利用图形化界面进行调试。</li>
+</ol>
+</section>
+
+  
+  
+  <footer class="post-tags">
+     
+    <a href="/tags/eda">eda</a>
+    
+  </footer>
+  
+
+  
+  
+  
+  <nav class="post-nav">
+    
+    <a class="prev" href="/post/2022-6-29-2/"><span>←</span><span>形式验证相关术语梳理</span></a>
+     
+    <a class="next" href="/post/zxluo/2022-6-18-3/"><span>yosys 安装和简单使用</span><span>→</span></a>
+    
+  </nav>
+  
+
+  
+  
+</article>
+
+</main>
+
+    <footer class="footer">
+  <p>&copy; 2022 <a href="/">wiki</a></p>
+  <p>Powered by <a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo️️</a>️</p>
+  <p>
+    <a href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Paper 5.1</a>
+  </p>
+</footer>
+
+  </body>
+</html>
