@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>wiki</title>
-    <link>/</link>
-    <description>Recent content on wiki</description>
+    <title>ZexunLuo on wiki</title>
+    <link>/author/zexunluo/</link>
+    <description>Recent content in ZexunLuo on wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright>
-    <lastBuildDate>Sun, 17 Jul 2022 10:33:12 +0800</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 17 Jul 2022 10:33:12 +0800</lastBuildDate><atom:link href="/author/zexunluo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>临时解决本站图片无法显示问题（raw.githubusercontent.com 无法访问）</title>
       <link>/post/zxluo/2022-7-17/</link>
@@ -33,30 +33,6 @@ hosts 文件在 C:\Windows\System32\drivers\etc\hosts，可以用管理员身份
  更快完成验证 更容易探索结构 不需要关注实现细节 使用 High-Level 综合提高生产率  RTL验证的问题：
  RTL 设计的验证更难 错误的 specification 导致 Bug 错误的 implementation 导致 Bug  2. 功能等价性检查  System-level 模型是硬件的 transaction/word level 模型 System 和 RTL 在给定相同输入的情况下计算相同的输出 等价性检查证明功能等价性 时间和内部结构可能会显著不同，但可观察到的结果必须相同  3. 传统流程  架构师创建 C++ specification RTL 设计师创建 RTL implementation RTL包含更多的实现细节  问题：
  设计通常嵌入到自己的仿真环境中，需要指定输入/输出映射、等效概念 Specification 和 implementation 可能会有很大不同 约束通常在设计师的头脑中，需要形式化 输入/输出差异有时难以在形式化模型中捕捉  4. High-Level 综合流程  等价性检验工具证明生成的RTL的正确性  优势：</description>
-    </item>
-    
-    <item>
-      <title>形式验证相关术语梳理</title>
-      <link>/post/2022-6-29-2/</link>
-      <pubDate>Wed, 29 Jun 2022 00:16:54 +0800</pubDate>
-      
-      <guid>/post/2022-6-29-2/</guid>
-      <description>1. rtl   在电路设计中RTL（Register Transfer Level）表示寄存器传输级。
-  RTL设计由Verilog或者VHDL硬件描述语言描述出理想电路达到的功能。其实际对应的结构是众多算术运算单元（ALU）、多路选择器（MUX）、寄存器等。
-  在ASIC设计中，设计者的任务是给出功能正确的RTL级代码。
-  2. netlist   电路设计中，网表（netlist）是用于描述电路元件相互之间连接关系的。
-  RTL经过逻辑综合后，其描述的电路进一步展开，转换成用逻辑门和基本触发器相互连接搭建的电路，而用来描述这些逻辑门和触发器之间的连接关系的文件就是门级网表文件。
-  netlist是由quartus、vivado、dc等综合工具生成的。
-  3. hierarchy   在电路设计中，hierarchy表示设计电路的层次化/结构化结构。
-  层次化电路设计方法实际上是一种模块化设计方法，用户可以将带设计的电路划分为多个子模块，每个子模块下面又可以划分为若干个功能模块，每个功能模块下面又可以划分为若干个基本模块，设计好每个基本模块，定义好每个基本模块之间的连接关系，就可以完成整个电路的设计过程。
-  若利用布尔运算法则说明，则是给设计添加中间变量和逻辑结构。层次化电路中，综合工具会寻找可分解出来的子块进行扁平化处理。
-  4. flatten   如果利用布尔运算法则说明，flatten扁平化指的是将设计中的中间变量和结构转换掉。
-  具体地讲，flatten扁平化能将RTL代码实际对应的结构描述中的众多算术运算单元（ALU）、多路选择器（MUX）、寄存器等，进一步展开，转换成用AND、OR、NOT、XNOR等逻辑门和DFF、JK或者RS等基本触发器搭建的电路。
-  5. synthesis   综合是指从高抽象级转换到低抽象级的过程。数字系统可以在多个层次上描述，这些层次由高到低可以分为算法层、寄存器传输层、逻辑层、版图层。
-  通常，综合可分为三个层次，高层次综合、逻辑综合，版图综合。
-  其中逻辑综合具体指使用DC、quartus、vivado等综合工具，根据芯片制造商提供的基本电路单元库，将硬件描述语言描述的RTL级电路转换为网表的过程。
-  另外也要注意verilog中的可综合与不可综合语句。
-  6. techmapping   technology工艺映射是将逻辑图或网表转化成可以用工艺实现的新的图或网表的过程。</description>
     </item>
     
     <item>
@@ -200,17 +176,6 @@ RTL 级描述最大的特点就在于 RTL 级描述时目前最高层次的可�
 逻辑图：
 波形图：
 1.9 逻辑代数的基本定律和恒等式 </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>关于本站 学习记录分享。
-本站架构 采用 Hugo 作为后台系统，使用 Github Pages 服务，源码托管在 Github 上。本站主题使用 hugo-paper。
-相关链接  Github 源码：https://github.com/smitwiki  </description>
     </item>
     
   </channel>
