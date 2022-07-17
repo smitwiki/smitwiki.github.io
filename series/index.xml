@@ -5,7 +5,6 @@
     <link>/series/</link>
     <description>Recent content in Series on wiki</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <copyright>Copyright © 2008–2019, Steve Francia and the lee.so; all rights reserved.</copyright><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
