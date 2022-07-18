@@ -6,7 +6,22 @@
     <description>Recent content on wiki</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 17 Jul 2022 10:33:12 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Jul 2022 23:48:46 +0800</lastBuildDate><atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>本网站使用指南</title>
+      <link>/post/zxluo/2022-7-18/</link>
+      <pubDate>Mon, 18 Jul 2022 23:48:46 +0800</pubDate>
+      
+      <guid>/post/zxluo/2022-7-18/</guid>
+      <description>0. 前言  “I web, therefore I am a spiderman.”
+ 如果你有兴趣发博客到本网站，请在下方评论区留言，我将拉你到这个项目里。^_^
+1. 工具安装   安装静态网站生成器 Hugo，并配置环境变量。
+  安装 Git，并配置环境变量。
+  2. 下载源码   下载网站源码库 https://github.com/smitwiki/smitwiki。
+  下载网站展示文件库 https://github.com/smitwiki/smitwiki/smitwiki.github.io 到 smitwiki 文件夹中，并将 smitwiki.github.io 文件夹重命名为 public。
+  3. 网站预览  在终端中进入网站源码根目录（smitwiki），执行 hugo server 在 浏览器中访问 localhost:1313。  4. 新建文章  在终端中进入网站源码根目录，执行 hugo new post/yourname/filename.md，既可在 content/post/yourname 目录下创建 markdown 文件。  5. 上传  在网站根目录下 执行 hugo git 上传 smitwiki 库。 cd public git 上传 smitwiki 库（public 文件夹）。  6.</description>
+    </item>
+    
     <item>
       <title>临时解决本站图片无法显示问题（raw.githubusercontent.com 无法访问）</title>
       <link>/post/zxluo/2022-7-17/</link>
